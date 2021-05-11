@@ -1,6 +1,8 @@
 #include <iostream>
 #include <time.h>
 #include <string>
+#include <chrono>
+#include <thread>
 using namespace std;
 
 void NUMBER (int);
@@ -25,6 +27,9 @@ int main()
 
     srand(time(0));
 
+    cout <<"spinning..." << endl;
+    this_thread::sleep_for (chrono::seconds(2));
+
         int number = rand() % 37;
         if(number == BetNumber){
 
@@ -44,6 +49,8 @@ int main()
      if(bet == "odds" || bet == "odd"){
 
         srand(time(0));
+        cout <<"spinning..." << endl;
+    this_thread::sleep_for (chrono::seconds(2));
         int number = rand() % 37;
 
         if (number % 2 != 0){
@@ -62,6 +69,8 @@ int main()
      if(bet == "evens" || bet == "even"){
 
         srand(time(0));
+        cout <<"spinning..." << endl;
+    this_thread::sleep_for (chrono::seconds(2));
         int number = rand() % 37;
 
         if (number % 2 == 0){
@@ -80,6 +89,8 @@ int main()
      if(bet == "red"){
 
         srand(time(0));
+        cout <<"spinning..." << endl;
+    this_thread::sleep_for (chrono::seconds(2));
         int number = rand() % 37;
 
         if (number % 2 == 0  && ((11 < number && number < 19) || (29 < number && number < 37)))
@@ -104,6 +115,8 @@ int main()
      if(bet == "black"){
 
         srand(time(0));
+        cout <<"spinning..." << endl;
+    this_thread::sleep_for (chrono::seconds(2));
         int number = rand() % 37;
 
       if (number % 2 == 0 && ((0 < number && number < 11) || (19 < number && number < 29)))
@@ -129,9 +142,11 @@ int main()
     if(bet == "1-18" || bet == "number from 1 - 18" || bet == "1to18" || bet == "number from 1 to 18"){
 
         srand(time(0));
+        cout <<"spinning..." << endl;
+    this_thread::sleep_for (chrono::seconds(2));
         int number = rand() % 37;
 
-        if(0 < number < 19){
+        if(0 < number && number < 19){
 
             cout << "\nyou win!" << endl;
             cout << "the number was ";
@@ -147,9 +162,11 @@ int main()
     if(bet == "19-36" || bet == "number from 19 - 36" || bet == "19to36" || bet == "number from 19 to 36"){
 
         srand(time(0));
+        cout <<"spinning..." << endl;
+    this_thread::sleep_for (chrono::seconds(2));
         int number = rand() % 37;
 
-        if(18 < number < 37){
+        if(18 < number && number < 37){
 
             cout << "\nyou win!" << endl;
             cout << "the number was ";
