@@ -14,6 +14,7 @@ int main()
     SetConsoleTitle("Roulette");
     string bet;
     int BetNumber;
+    srand(time(0));
     int number = rand() % 37;
 
     cout << "How do you want to bet?" << endl;
@@ -21,7 +22,6 @@ int main()
 
     bet:
     cin >> bet;
-    srand(time(0));
 
     single:
     if(bet == "single" || bet == "Single"){
@@ -35,7 +35,6 @@ int main()
 
     SELECT_NUMBER(number);
 
-    int number = rand() % 37;
     if(number == BetNumber){
 
         cout << "\nYou win!" << endl;
@@ -114,20 +113,20 @@ int main()
 
        if (number % 2 == 0 && ((0 < number && number < 11) || (19 < number && number < 29)))
         {
-            cout << "\nwinner winner" << endl;
-            cout << "the number was ";
+            cout << "\nWinner winner" << endl;
+            cout << "The number was ";
             NUMBER(number);
      }
        else if(number % 2 != 0 && ((10 < number && number < 18) || (28 < number && number < 36)))
         {
-           cout << "\nwinner winner" << endl;
-            cout << "the number was ";
+           cout << "\nWinner winner" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
       else{
 
-        cout << "\nyou loseee" << endl;
-           cout << "the number was ";
+        cout << "\nYou loseee" << endl;
+           cout << "The number was ";
            NUMBER(number);
         }
   }
@@ -138,14 +137,14 @@ int main()
 
         if(0 < number && number < 19){
 
-            cout << "\nyou win!" << endl;
-            cout << "the number was ";
+            cout << "\nYou win!" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
       else{
 
-            cout << "\nyou lose!" << endl;
-            cout << "the number was ";
+            cout << "\nYou lose!" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
   }
@@ -155,21 +154,16 @@ int main()
 
         if(18 < number && number < 37){
 
-            cout << "\nyou win!" << endl;
-            cout << "the number was ";
+            cout << "\nYou win!" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
         else{
 
-            cout << "\nyou lose!" << endl;
-            cout << "the number was ";
+            cout << "\nYou lose!" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
-    }
-    else{
-
-        cout << "\ni don't know what you said, try again" << endl;
-        goto bet;
     }
 }
 
@@ -204,14 +198,19 @@ void NUMBER(int number){
 
         else
         {
-            cout << number << "what the fuck error???" << endl; //error?
+            cout << number << "What the fuck error???" << endl; //error?
         }
 }
 
 //select random number
 void SELECT_NUMBER(int number){
 
-     number = rand() % 37;
-     cout <<"spinning..." << endl;
-     this_thread::sleep_for (chrono::seconds(2));
+     cout <<"Spinning..." << "\n" << endl;
+
+     for(int x = 0; x < 8; x++){
+
+        number = rand() % 37;
+        this_thread::sleep_for (chrono::milliseconds(500));
+        cout << number << "\r";
+     }
 }
