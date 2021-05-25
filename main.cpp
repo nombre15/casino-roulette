@@ -3,6 +3,7 @@
 #include <string>
 #include <chrono>
 #include <thread>
+#include <windows.h>
 using namespace std;
 
 void NUMBER (int);
@@ -10,21 +11,25 @@ void SELECT_NUMBER(int);
 
 int main()
 {
+    SetConsoleTitle("Roulette");
     string bet;
     int BetNumber;
     int number = rand() % 37;
-    cout << "how do you want to bet" << endl;
-    cout << " odds \n even \n red \n black \n single number \n number from 1 - 18 \n number from 19 - 36" << endl;
+
+    cout << "How do you want to bet?" << endl;
+    cout << "\nOdds \nEven \nRed \nBlack \nSingle number \nNumber from 1 - 18 \nNumber from 19 - 36\n" << endl;
+
+    bet:
     cin >> bet;
     srand(time(0));
 
     single:
-    if(bet == "single"){
+    if(bet == "single" || bet == "Single"){
 
-    cout << "enter a nummber to make a bet" << endl;
+    cout << "Enter a number to make a bet" << endl;
     cin >> BetNumber;
     if(BetNumber > 37){
-        cout << "that is not a valid number" << endl;
+        cout << "That is not a valid number" << endl;
         goto single;
     }
 
@@ -33,50 +38,50 @@ int main()
     int number = rand() % 37;
     if(number == BetNumber){
 
-        cout << "\nyou win!" << endl;
-        cout << "the number was ";
+        cout << "\nYou win!" << endl;
+        cout << "The number was ";
         NUMBER(number);
 
   }
     else if(number != BetNumber){
 
-        cout << "\nyou lose!" << endl;
-        cout << "the number was ";
+        cout << "\nYou lose!" << endl;
+        cout << "The number was ";
         NUMBER(number);
      }
   }
 
-    if(bet == "odds" || bet == "odd"){
+    if(bet == "odds" || bet == "odd" || bet == "Odds" || bet == "Odd"){
 
         SELECT_NUMBER(number);
 
         if (number % 2 != 0){
 
-            cout << "\nwinner!" << endl;
-            cout << "the number was ";
+            cout << "\nWinner!" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
         else{
 
-            cout << "\nloserrr!!" << endl;
-            cout << "the number was ";
+            cout << "\nLoserrr!!" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
   }
-     if(bet == "evens" || bet == "even"){
+     if(bet == "evens" || bet == "even" || bet == "Evens" || bet == "Even"){
 
        SELECT_NUMBER(number);
 
         if (number % 2 == 0){
 
-            cout << "\nwinner!" << endl;
-            cout << "the number was ";
+            cout << "\nWinner!" << endl;
+            cout << "The number was ";
             NUMBER(number);
         }
         else{
 
             cout << "\nloserrr!!" << endl;
-            cout << "the number was ";
+            cout << "The number was ";
             NUMBER(number);
         }
   }
@@ -86,24 +91,24 @@ int main()
 
         if (number % 2 == 0  && ((11 < number && number < 19) || (29 < number && number < 37)))
         {
-            cout << "\nwinner!!" <<endl;
-            cout << "the number was ";
+            cout << "\nWinner!!" <<endl;
+            cout << "The number was ";
             NUMBER(number);
         }
         else if (number % 2 != 0 && ((0 < number && number < 10) || (18 < number && number < 28))){
 
-            cout << "\nwinner!!" <<endl;
-            cout << "the number was ";
+            cout << "\nWinner!!" <<endl;
+            cout << "The number was ";
             NUMBER(number);
         }
         else{
 
-           cout << "\nyou loseee" << endl;
-           cout << "the number was ";
+           cout << "\nYou loseee" << endl;
+           cout << "The number was ";
            NUMBER(number);
         }
   }
-     if(bet == "black"){
+     if(bet == "black" || bet == "blacks" || bet == "Black" || bet == "Blacks"){
 
         SELECT_NUMBER(number);
 
@@ -160,6 +165,11 @@ int main()
             cout << "the number was ";
             NUMBER(number);
         }
+    }
+    else{
+
+        cout << "\ni don't know what you said, try again" << endl;
+        goto bet;
     }
 }
 
