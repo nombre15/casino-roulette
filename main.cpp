@@ -84,7 +84,7 @@ int main()
             NUMBER(number);
         }
   }
-     if(bet == "red"){
+     if(bet == "red" || bet == "reds" || bet == "Red" || bet == "Reds"){
 
         SELECT_NUMBER(number);
 
