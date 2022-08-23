@@ -8,16 +8,14 @@
 using namespace std;
 
 void CHOOSE_RANDOM_NUMBER(int&);
-void RANDOM_NUMBER(int&, int&);
+void CHOOSE_COLOR(int&, string&);
 void CONTINUE();
 
-int main()
-{
+int main(){
+
     do{
         SetConsoleTitle("Roulette");
-        string bet;
-        int color = 0;
-        string colorNumber;
+        string bet, color, colorNumber;
         int BetNumber;
         srand(time(0));
         int random;
@@ -26,126 +24,130 @@ int main()
         cout << "\nOdds \nEven \nRed \nBlack \nSingle number \nNumber from 1 - 18 \nNumber from 19 - 36\n" << endl;
 
         cin >> bet;
+
         system("CLS");
 
-        single:
-        if(bet == "single" || bet == "Single" || bet == "number" || bet == "Number"){
+//single number
+        if(bet == "single" || bet == "Single" || bet == "number" || bet == "Number" || bet == "NUMBER" || bet == "SINGLE"){
 
+            single:
             cout << "Type in the number to make a bet" << endl;
             cin >> BetNumber;
 
             if(BetNumber > 37){
-                cout << "\nNot a valid number\n" << endl;
-                goto solo;
+                cout << BetNumber << " is greater than 37, not a valid number\n" << endl;
+                goto single;
             }
+
+            system("CLS");
 
             CHOOSE_RANDOM_NUMBER(random);
 
             if(random == BetNumber){
 
                 cout << "Winner!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
             else {
 
                 cout << "You lost!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
-            if(color == 0) {
-
-                colorNumber = "black";
-            }
-
-            else{
-
-                colorNumber = "red";
-            }
-
-            cout << "\n\nYour bet: " << BetNumber << " " << colorNumber;
+            cout << "\n\nYour bet: "; CHOOSE_COLOR(BetNumber, color);
         }
+//end single number
 
-        if(bet == "odds" || bet == "odd" || bet == "Odd" || bet == "Odds"){
+//odds
+        if(bet == "odds" || bet == "odd" || bet == "Odd" || bet == "Odds" || bet == "ODD" || bet == "ODDS"){
 
             CHOOSE_RANDOM_NUMBER(random);
 
             if (random % 2 != 0){
 
                 cout << "Winner!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
             else{
 
                 cout << "\nLoserrrrrrrr!!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
+
+            cout << "\n\nYour bet: Odds" << endl;
         }
+//end odds
 
-        if(bet == "evens" || bet == "even" || bet == "Evens" || bet == "Even"){
+//evens
+        if(bet == "evens" || bet == "even" || bet == "Evens" || bet == "Even" || bet == "EVEN" || bet == "EVENS"){
 
-        CHOOSE_RANDOM_NUMBER(random);
+            CHOOSE_RANDOM_NUMBER(random);
 
             if (random % 2 == 0){
 
                 cout << "Winner!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
             else{
 
                 cout << "Loserr!!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
-        }
 
-        if(bet == "red" || bet == "reds" || bet == "Red" || bet == "Reds"){
+            cout << "\n\nYour bet: Evens" << endl;
+        }
+//end evens
+
+//reds
+        if(bet == "red" || bet == "reds" || bet == "Red" || bet == "Reds" || bet == "RED" || bet == "REDS"){
 
             CHOOSE_RANDOM_NUMBER(random);
+            CHOOSE_COLOR(random, color);
+            system("CLS");
 
-            if (random % 2 == 0  && ((11 < random && random < 19) || (29 < random && random < 37))){
+            if (color == "red"){
 
                 cout << "\nWinner!!" <<endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
-            }
-
-            else if (random % 2 != 0 && ((0 < random && random < 10) || (18 < random && random < 28))){
-
-                cout << "Winner!!" <<endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
             else{
 
                 cout << "You looost" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
-        }
 
-        if(bet == "black" || bet == "blacks" || bet == "Black" || bet == "Blacks"){
+            cout << "\n\nYour bet: Reds" << endl;
+        }
+//end reds
+
+//blacks
+        if(bet == "black" || bet == "blacks" || bet == "Black" || bet == "Blacks" || bet == "BLACKS" || bet == "BLACK"){
 
             CHOOSE_RANDOM_NUMBER(random);
+            CHOOSE_COLOR(random, color);
+            system("CLS");
 
-            if (random % 2 == 0 && ((0 < random && random < 11) || (19 < random && random < 29))){
+            if (color == "black"){
 
                 cout << "Winner winner" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
-            }
-
-            else if(random % 2 != 0 && ((10 < random && random < 18) || (28 < random && random < 36))){
-
-                cout << "And we have a winner!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
             else{
 
                 cout << "You looost" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
-        }
 
+            cout << "\n\nYour bet: Blacks" << endl;
+        }
+//end blacks
+
+//1-18
         if(bet == "1-18" || bet == "number from 1 - 18" || bet == "1to18" || bet == "Number from 1 to 18"){
 
             CHOOSE_RANDOM_NUMBER(random);
@@ -153,16 +155,20 @@ int main()
             if(0 < random && random < 19){
 
                 cout << "Winner!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
             else{
 
                 cout << "Loser!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
-        }
 
+            cout << "\n\nYour bet: 1-18" << endl;
+        }
+//end 1-18
+
+//19-36
         if(bet == "19-36" || bet == "number from 19 - 36" || bet == "19to36" || bet == "number from 19 to 36"){
 
             CHOOSE_RANDOM_NUMBER(random);
@@ -170,20 +176,48 @@ int main()
             if(18 < random && random < 37){
 
                 cout << "You win!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
 
             else{
 
                 cout << "You lose!" << endl;
-                cout << "\nWinner number: "; RANDOM_NUMBER(random, color);
+                cout << "\nWinner number: "; CHOOSE_COLOR(random, color);
             }
-        }
 
-        if(bet != "number" || bet != "Number" || bet != "single" || bet != "Single"){
- 
-            cout << "\n\nYour bet: " << bet << endl;
+            cout << "\n\nYour bet: 19-36" << endl;
         }
+//end 19-36
+
+//single number
+        else if(stoi(bet) >= 0 && stoi(bet) < 38){
+
+            CHOOSE_RANDOM_NUMBER(random);
+            BetNumber = stoi(bet);
+
+            if(BetNumber == random){
+
+                cout << "Winner winner!" << endl;
+                cout << "\nLucky number: "; CHOOSE_COLOR(random, color);
+            }
+
+            else{
+
+                cout << "Loser!" << endl;
+                cout << "\nLucky number: "; CHOOSE_COLOR(random, color);
+            }
+
+            cout << "\n\nYour bet: "; CHOOSE_COLOR(BetNumber, color);
+        }
+//end single number
+
+//exception
+        else if(stoi(bet) > 37){
+
+            cout << stoi(bet) << " is greater than 37, not a valid number\n" << endl;
+            goto single;
+        }
+//fin exception
 
         CONTINUE();
         system("CLS");
@@ -192,35 +226,36 @@ int main()
 }
 
 //choose color according to number
-void RANDOM_NUMBER(int &number, int &id){
+void CHOOSE_COLOR(int &number, string &id){
 
     if(number == 0){
 
         cout << number << " green" << endl; //GREEN
+        id = "green";
     }
 
-    else if (number % 2 == 0 && ((0 < number && number < 11) || (19 < number && number < 29))){ //even blacks (1 -> 10 & 20 -> 28)
+    else if (number % 2 == 0 && ((1 <= number && number <= 10) || (20 <= number && number <= 28))){ //even blacks (1 -> 10 & 20 -> 28)
 
         cout << number << " black" << endl;
-        id = 0;
+        id = "black";
     }
 
-    else if (number % 2 == 0 && ((11 < number && number < 19) || (29 < number && number < 37))){ //even reds (12 -> 18 & 30 -> 36)
+    else if (number % 2 == 0 && ((12 <= number && number <= 18) || (30 <= number && number <= 36))){ //even reds (12 -> 18 & 30 -> 36)
 
         cout << number << " red" << endl;
-        id = 1;
+        id = "red";
     }
 
-    else if (number % 2 != 0 && ((0 < number && number < 10) || (18 < number && number < 28))){ //odd reds (1 -> 9 & 19 -> 27)
+    else if (number % 2 != 0 && ((1 <= number && number <= 9) || (19 <= number && number <= 27))){ //odd reds (1 -> 9 & 19 -> 27)
 
         cout << number << " red" << endl;
-        id = 1;
+        id = "red";
     }
 
-    else if (number % 2 != 0 && ((10 < number && number < 18) || (28 < number && number < 36))){ //odd blacks (11 -> 17 & 29 -> 35)
+    else if (number % 2 != 0 && ((11 <= number && number <= 17) || (29 <= number && number <= 35))){ //odd blacks (11 -> 17 & 29 -> 35)
 
         cout << number << " black" << endl;
-        id = 0;
+        id = "black";
     }
 
     else{
@@ -228,6 +263,7 @@ void RANDOM_NUMBER(int &number, int &id){
         cout << number << "ERROR???" << endl; //error?
     }
 }
+//end choose color according to number
 
 //choose random number
 void CHOOSE_RANDOM_NUMBER(int &number){
@@ -243,7 +279,9 @@ void CHOOSE_RANDOM_NUMBER(int &number){
 
     system("CLS");
 }
+//end choose random number
 
+//play again
 void CONTINUE(){
 
     int c;
@@ -251,3 +289,4 @@ void CONTINUE(){
     c = getch();
     if (c == 0 || c == 224) getch();
 }
+//end play again
