@@ -27,7 +27,7 @@ int ruleta::play(){
         cin >> money;
 
         //If a non-numeric value is entered
-         while(cin.fail() || cin.peek() != '\n') {
+         while(cin.fail() || cin.peek() != '\n' || money <= 0) {
 
             system("cls");
             cout << "Enter a valid amount of money\n" << endl;
