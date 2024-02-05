@@ -11,6 +11,7 @@ class ruleta{
         void chooseColor(int number, int red[], int black[], string &color);
         void playerWins(int number,  int sumBet, int red[], int black[], int& money, string& colorNumber);
         void playerLoses(int number, int red[], int black[], int& money, string& colorNumber);
+        void validateMoney(int& money);
 
     private:
         int money;
