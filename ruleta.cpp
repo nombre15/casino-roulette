@@ -26,16 +26,7 @@ int ruleta::play(){
         cout << "Enter the amount of money to bet: $";
         cin >> money;
 
-        //If a non-numeric value is entered
-         while(cin.fail() || cin.peek() != '\n' || money <= 0) {
-
-            system("cls");
-            cout << "Enter a valid amount of money\n" << endl;
-            cin.clear();
-            cin.ignore(256,'\n');
-            cout << "$";
-            cin >> money;
-        }
+        validateMoney(money);
 
         system("cls");
 
@@ -436,3 +427,12 @@ void ruleta::playerLoses(int number, int red[], int black[], int& money, string&
     cout << "\nNow you have $" << money;
 }
 
+void ruleta::validateMoney(int& money){
+
+    system("cls");
+    cout << "Enter a valid amount of money\n" << endl;
+    cin.clear();
+    cin.ignore(256,'\n');
+    cout << "$";
+    cin >> money;
+}
